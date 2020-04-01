@@ -6,6 +6,8 @@ import ButtonAddUser from '../add-user-component/buttom/button-add-user-componen
 
 const useStyles = makeStyles(theme => ({
   root: {
+    display: 'flex',
+    flex:1,
     '& > *': {
       margin: theme.spacing(1),
       width: 200,
@@ -17,7 +19,7 @@ export default function AddUserComponent() {
     const classes = useStyles();
   
     return (
-      <form className={classes.root} noValidate autoComplete="off">
+      <form className={'contenedor1 ${classes.root}'}  noValidate autoComplete="off" >
         <TextField id="outlined-basic" label="Agregar" variant="outlined" />
         <ButtonAddUser/>
       </form>

@@ -18,7 +18,6 @@ export default function SearchUser() {
   
     return (
       <form className={classes.root} noValidate autoComplete="off">
-        <h2>Input de busqueda de usuario</h2>
         <TextField id="outlined-basic" label="Buscar" variant="outlined" />
       </form>
     );

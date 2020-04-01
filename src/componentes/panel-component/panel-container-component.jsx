@@ -5,10 +5,14 @@ import SearchUser from '../search-user-component/search-user-component';
 
 export default function PanelContainer(){
     return(
-        <div>
-            <h2>Panel Container</h2>
+        <div className='contenedor'>
+            <div>
             <AddUserComponent />
+            </div>
+            <div>
             <SearchUser />
+            </div>
+            
         </div>
         
     );
