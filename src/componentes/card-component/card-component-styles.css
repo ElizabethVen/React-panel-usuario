@@ -11,3 +11,8 @@
     margin-left: 20px;
     margin-top: 20px;
 }
+
+.align-avatar{
+    display: flex;
+    align-items: center;
+}

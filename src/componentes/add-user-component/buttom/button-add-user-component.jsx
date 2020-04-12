@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function ButtonAddUser() {
+export default function ButtonAddUser(props) {
   const classes = useStyles();
 
   return (
@@ -27,6 +27,7 @@ export default function ButtonAddUser() {
         size="large"
         className={classes.button}
         startIcon={<AddIcon />}
+        onClick={props.funcionAgregar} /*cada que se de click se ejecuta la funcionAgregar*/
       >
         Agregar
       </Button>

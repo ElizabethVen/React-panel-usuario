@@ -21,7 +21,14 @@ const useStyles = makeStyles(theme => ({
                 <div className={classes.root}>
                     <Grid container spacing={3}>
                         {
-                            props.personas.map( persona => <Card1 nombre= {persona.name} email={persona.email} />)
+                            props.personas.map( persona => 
+                            <Card1 
+                              key = {persona.id}
+                              id = {persona.id}
+                              nombre= {persona.name} 
+                              email={persona.email} 
+                              funcionBorrarPersona={props.funcionBorrarPersona}
+                            />)
                         }
                     </Grid>
                 </div>

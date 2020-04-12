@@ -13,12 +13,17 @@ const useStyles = makeStyles(theme => ({
   },
 }));
   
-export default function SearchUser() {
+export default function SearchUser(props) {
     const classes = useStyles();
   
     return (
       <form className={classes.root} noValidate autoComplete="off">
-        <TextField id="outlined-basic" label="Buscar" variant="outlined" />
+        <TextField 
+          onChange ={ props.funcionBuscarPersona} 
+          id="outlined-basic" 
+          label="Buscar Usuario" 
+          variant="outlined" 
+        />
       </form>
     );
   }
