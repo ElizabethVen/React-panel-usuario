@@ -12,6 +12,7 @@ export default class App extends React.Component {
       //Clave: valor
       personas: [], 
         nombre: "",
+        email: "",
         buscarPersona: "",
         respaldoPersonas: []
       }
@@ -41,12 +42,17 @@ export default class App extends React.Component {
         "id": indice,
         "name": this.state.nombre,
         "username": "Bret",
-        "email": "Sincere@april.biz",
+        "email": this.state.email,
       });
       /*para poder manipular el estado usaremos setState le pasaremos al arreglo perSonas lo que contiene personasModificadas*/
       /*React no permite manipular los estados directamente por eso se creo el arreglo personasModificadas*/
+      //Agregar los nuevos estados
       this.setState({personas: personasModificadas});
       this.setState({respaldoPersonas: personasModificadas});
+
+      //Quitar el valor actual para los dos componentes de texto
+      this.setState({nombre: ""});
+      this.setState({email: ""});
     }
     //saludo = () =>{
     //  alert("hola mundo"); 
@@ -62,6 +68,11 @@ export default class App extends React.Component {
   obtenerPersona = (event) => {
     /*cada vez que se haga un cambio en el textfield se guardara en el state en el atributo nombre*/
     this.setState({nombre: event.target.value});
+  }
+
+  obtenerEmail = (event) => {
+    /*cada vez que se haga un cambio en el textfield se guardara en el state en el atributo nombre*/
+    this.setState({email: event.target.value});
   }
 
   buscarPersona = (event) => {
@@ -95,7 +106,10 @@ export default class App extends React.Component {
         <PanelContainer 
           funcionAgregar={this.agregarTarjeta} 
           funcionObtenerPersona = {this.obtenerPersona}
+          funcionObtenerEmail = {this.obtenerEmail}
           funcionBuscarPersona = {this.buscarPersona}
+          nombre={this.state.nombre}
+          email={this.state.email}
         />
         <CardContainer 
           personas = {this.state.personas}

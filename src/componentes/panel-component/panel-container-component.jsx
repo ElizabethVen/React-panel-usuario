@@ -7,8 +7,12 @@ export default function PanelContainer(props){
     return(
         <div className='contenedor'>
             <div>
-            <AddUserComponent funcionAgregar={props.funcionAgregar} 
-            funcionObtenerPersona={props.funcionObtenerPersona}/>
+            <AddUserComponent 
+            funcionAgregar={props.funcionAgregar} 
+            funcionObtenerPersona={props.funcionObtenerPersona}
+            funcionObtenerEmail = {props.funcionObtenerEmail}
+            nombre={props.nombre}
+            email={props.email}/>
             </div>
             <div>
             <SearchUser funcionBuscarPersona={props.funcionBuscarPersona}/>

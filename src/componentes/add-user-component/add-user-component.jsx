@@ -24,6 +24,14 @@ export default function AddUserComponent(props) {
         onChange ={ props.funcionObtenerPersona} /*cada que haya un cambio en el textfield se ejecuta la funcionObtenerPersona*/
         id="outlined-basic" 
         label="Agregar Usuario" 
+        value={props.nombre}
+        variant="outlined" />
+        <TextField 
+        onChange ={ props.funcionObtenerEmail}
+        className="espacio"
+        id="outlined-basic" 
+        label="Email" 
+        value= {props.email}
         variant="outlined" />
         <ButtonAddUser funcionAgregar={props.funcionAgregar}/>
       </form>

@@ -27,12 +27,11 @@ const useStyles = makeStyles(theme => ({
 
 export default function Card1(props) {
   const classes = useStyles();
-  //const bull = <span className={classes.bullet}>•</span>;
   
   return (
     <Grid item xs={3}>
-      <Paper className={classes.paper}>
-        <Avatar className={classes.orange}>N</Avatar>
+      <Paper className={'card-flex ${classes.paper}'}>
+        <Avatar className={classes.orange}>{props.nombre[0]}</Avatar>
         <p>{props.nombre}</p>
         <p>{props.email}</p>
         <IconButton 

@@ -1,18 +1,15 @@
-.formato {
-    background-color: white;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0px 10px;
-}
 
 .MuiGrid-root .formato{
     margin-left: 20px;
     margin-top: 20px;
 }
 
-.align-avatar{
+.card-flex{
+    background-color: white;
+    border-radius: 20px;
     display: flex;
+    flex-direction: column;
     align-items: center;
+    margin-top: 10px;
+    padding-top: 10px;
 }
