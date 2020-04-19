@@ -8,11 +8,14 @@ export default function PanelContainer(props){
         <div className='contenedor'>
             <div>
             <AddUserComponent 
-            funcionAgregar={props.funcionAgregar} 
-            funcionObtenerPersona={props.funcionObtenerPersona}
-            funcionObtenerEmail = {props.funcionObtenerEmail}
-            nombre={props.nombre}
-            email={props.email}/>
+                funcionAgregar={props.funcionAgregar} 
+                funcionObtenerPersona={props.funcionObtenerPersona}
+                funcionObtenerEmail = {props.funcionObtenerEmail}
+                nombre={props.nombre}
+                email={props.email}
+                validacion={props.validacion} 
+                mensajeError={props.mensajeError}
+            />
             </div>
             <div>
             <SearchUser funcionBuscarPersona={props.funcionBuscarPersona}/>

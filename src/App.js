@@ -14,7 +14,9 @@ export default class App extends React.Component {
         nombre: "",
         email: "",
         buscarPersona: "",
-        respaldoPersonas: []
+        respaldoPersonas: [],
+        camposValidos: false,
+        mensajeError: ""
       }
     //this.saludo = this.saludo.bind(this)
     }
@@ -33,26 +35,32 @@ export default class App extends React.Component {
 
     //Al utilizar las funciones de flecha el contexto será el mismo en el que se declaró
     agregarTarjeta = () => {
-      let personasModificadas = this.state.personas; /*se va a capturar en una variable el valor que tiene el arreglo personas*/ 
-      let arregloIndices = this.state.personas.map( persona => persona.id);
-      let indice = arregloIndices[arregloIndices.length-1]+1;
 
-      /*agregaremos a personas modificadas un elemento*/
+      if(this.state.nombre.length > 0 && this.state.email.length > 0){
+        let personasModificadas = this.state.personas; /*se va a capturar en una variable el valor que tiene el arreglo personas*/ 
+        let arregloIndices = this.state.personas.map( persona => persona.id);
+        let indice = arregloIndices[arregloIndices.length-1]+1;
+
+        /*agregaremos a personas modificadas un elemento*/
         personasModificadas.push({
         "id": indice,
         "name": this.state.nombre,
         "username": "Bret",
         "email": this.state.email,
-      });
-      /*para poder manipular el estado usaremos setState le pasaremos al arreglo perSonas lo que contiene personasModificadas*/
-      /*React no permite manipular los estados directamente por eso se creo el arreglo personasModificadas*/
-      //Agregar los nuevos estados
-      this.setState({personas: personasModificadas});
-      this.setState({respaldoPersonas: personasModificadas});
-
-      //Quitar el valor actual para los dos componentes de texto
-      this.setState({nombre: ""});
-      this.setState({email: ""});
+        });
+        /*para poder manipular el estado usaremos setState le pasaremos al arreglo perSonas lo que contiene personasModificadas*/
+        /*React no permite manipular los estados directamente por eso se creo el arreglo personasModificadas*/
+        //Agregar los nuevos estados
+        this.setState({personas: personasModificadas});
+        this.setState({respaldoPersonas: personasModificadas});
+        //Quitar el valor actual para los dos componentes de texto
+        this.setState({nombre: ""});
+        this.setState({email: ""});
+      } else{
+        alert("Hay campos vacios");
+        this.setState({camposValidos: true});
+        this.setState({mensajeError: "Completa este campo"});
+      } 
     }
     //saludo = () =>{
     //  alert("hola mundo"); 
@@ -68,11 +76,23 @@ export default class App extends React.Component {
   obtenerPersona = (event) => {
     /*cada vez que se haga un cambio en el textfield se guardara en el state en el atributo nombre*/
     this.setState({nombre: event.target.value});
+    if(event.target.value.length >0){
+      this.setState({camposValidos: false});
+      this.setState({mensajeError: ""});
+    }else{
+      this.setState({camposValidos: true});
+    }
   }
 
   obtenerEmail = (event) => {
     /*cada vez que se haga un cambio en el textfield se guardara en el state en el atributo nombre*/
     this.setState({email: event.target.value});
+    if(event.target.value.length >0){
+      this.setState({camposValidos: false});
+      this.setState({mensajeError: ""});
+    }else{
+      this.setState({camposValidos: true});
+    }
   }
 
   buscarPersona = (event) => {
@@ -110,6 +130,8 @@ export default class App extends React.Component {
           funcionBuscarPersona = {this.buscarPersona}
           nombre={this.state.nombre}
           email={this.state.email}
+          validacion={this.state.camposValidos}
+          mensajeError={this.state.mensajeError}
         />
         <CardContainer 
           personas = {this.state.personas}

@@ -25,6 +25,8 @@ export default function AddUserComponent(props) {
         id="outlined-basic" 
         label="Agregar Usuario" 
         value={props.nombre}
+        error= {props.validacion}
+        helperText={props.mensajeError}
         variant="outlined" />
         <TextField 
         onChange ={ props.funcionObtenerEmail}
@@ -32,6 +34,8 @@ export default function AddUserComponent(props) {
         id="outlined-basic" 
         label="Email" 
         value= {props.email}
+        error= {props.validacion}
+        helperText={props.mensajeError}
         variant="outlined" />
         <ButtonAddUser funcionAgregar={props.funcionAgregar}/>
       </form>
