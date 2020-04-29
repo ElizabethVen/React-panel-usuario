@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import Header from './componentes/header/header-component';
 import PanelContainer from './componentes/panel-component/panel-container-component';
@@ -36,26 +36,37 @@ export default class App extends React.Component {
     //Al utilizar las funciones de flecha el contexto será el mismo en el que se declaró
     agregarTarjeta = () => {
 
+      let buscarPersonaArray=this.state.personas;
+      
       if(this.state.nombre.length > 0 && this.state.email.length > 0){
-        let personasModificadas = this.state.personas; /*se va a capturar en una variable el valor que tiene el arreglo personas*/ 
-        let arregloIndices = this.state.personas.map( persona => persona.id);
-        let indice = arregloIndices[arregloIndices.length-1]+1;
+        buscarPersonaArray = buscarPersonaArray.filter(
+          persona => persona.name.includes(this.state.nombre)
+        );
 
-        /*agregaremos a personas modificadas un elemento*/
-        personasModificadas.push({
-        "id": indice,
-        "name": this.state.nombre,
-        "username": "Bret",
-        "email": this.state.email,
-        });
-        /*para poder manipular el estado usaremos setState le pasaremos al arreglo perSonas lo que contiene personasModificadas*/
-        /*React no permite manipular los estados directamente por eso se creo el arreglo personasModificadas*/
-        //Agregar los nuevos estados
-        this.setState({personas: personasModificadas});
-        this.setState({respaldoPersonas: personasModificadas});
-        //Quitar el valor actual para los dos componentes de texto
-        this.setState({nombre: ""});
-        this.setState({email: ""});
+        if(buscarPersonaArray.length === 0){
+          let personasModificadas = this.state.personas; /*se va a capturar en una variable el valor que tiene el arreglo personas*/ 
+          let arregloIndices = this.state.personas.map( persona => persona.id);
+          let indice = arregloIndices[arregloIndices.length-1]+1;
+
+          /*agregaremos a personas modificadas un elemento*/
+          personasModificadas.push({
+          "id": indice,
+          "name": this.state.nombre,
+          "username": "Bret",
+          "email": this.state.email,
+          });
+          /*para poder manipular el estado usaremos setState le pasaremos al arreglo perSonas lo que contiene personasModificadas*/
+          /*React no permite manipular los estados directamente por eso se creo el arreglo personasModificadas*/
+          //Agregar los nuevos estados
+          this.setState({personas: personasModificadas});
+          this.setState({respaldoPersonas: personasModificadas});
+          //Quitar el valor actual para los dos componentes de texto
+          this.setState({nombre: ""});
+          this.setState({email: ""});
+        }else{
+          console.log("Ya existe este usuario");
+        }
+        
       } else{
         alert("Hay campos vacios");
         this.setState({camposValidos: true});

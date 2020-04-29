@@ -27,7 +27,9 @@ export default function AddUserComponent(props) {
         value={props.nombre}
         error= {props.validacion}
         helperText={props.mensajeError}
-        variant="outlined" />
+        variant="outlined" 
+        className= "espacio"
+        />
         <TextField 
         onChange ={ props.funcionObtenerEmail}
         className="espacio"
